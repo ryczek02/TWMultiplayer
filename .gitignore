@@ -2,3 +2,6 @@
 *.log
 *.svg
 **/.vs
+**/TWClient/x64/Debug/
+**/TWServer/x64/Debug/
+**/x64/Debug/
