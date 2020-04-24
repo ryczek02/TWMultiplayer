@@ -19,11 +19,20 @@ Gracze powinni odkryć co najmniej dwie postacie (np. wybrana + słoń), na ten 
 
 - [ ] Dane pozycji gracza
   - [x] Lokacja
-  - [ ] Obrót
+  - [ ] Obrót (znany OPCODE, nie włączone)
 - [ ] Informacje o graczu
-  - [ ] HP
-  - [ ] Stamina
+  - [ ] HP (znany OPCODE, nie włączone)
+  - [ ] Stamina (znany OPCODE, nie włączone)
   - [ ] Animacja
+
+|         |  Gracz 1   |  Gracz 2   |
+|:-------:|------------|------------|
+| PosX    | 0x00E16974 | 0x00E16C64 |
+| PosY    | 0x00E16978 | 0x00E16C68 |
+| PosZ    | 0x00E1697C | 0x00E16C6C |
+| RotZ    | 0x00E16998 | 0x00E16C88 |
+| HP      | 0x00E169DC | 0x00E16CCC |
+| Stamina | 0x00E16BFC | 0x00E16EEC |
 
 ## Kompilacja
 
