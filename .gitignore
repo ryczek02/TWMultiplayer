@@ -1,0 +1,4 @@
+#ignore logs
+*.log
+*.svg
+**/.vs
