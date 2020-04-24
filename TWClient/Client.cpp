@@ -76,7 +76,7 @@ bool Client::Connect()
 	return connected;
 }
 
-float OutputVertices[3];
+float OutputCoords[3];
 
 
 bool Client::ProcessPacket(PACKET packetType)
@@ -94,16 +94,16 @@ bool Client::ProcessPacket(PACKET packetType)
 		std::copy(
 			std::istream_iterator <float>(ss),
 			std::istream_iterator <float>(),
-			OutputVertices
+			OutputCoords
 		);
 
-		std::cout << OutputVertices[0] << std::endl;
-		std::cout << OutputVertices[1] << std::endl;
-		std::cout << OutputVertices[2] << std::endl;
+		std::cout << OutputCoords[0] << std::endl;
+		std::cout << OutputCoords[1] << std::endl;
+		std::cout << OutputCoords[2] << std::endl;
 
-		WriteProcessMemory(pHandle, (void*)0x00E16C64, &OutputVertices[0], sizeof(OutputVertices[0]), 0);
-		WriteProcessMemory(pHandle, (void*)0x00E16C68, &OutputVertices[1], sizeof(OutputVertices[1]), 0);
-		WriteProcessMemory(pHandle, (void*)0x00E16C6C, &OutputVertices[2], sizeof(OutputVertices[2]), 0);
+		WriteProcessMemory(pHandle, (void*)0x00E16C64, &OutputCoords[0], sizeof(OutputCoords[0]), 0);
+		WriteProcessMemory(pHandle, (void*)0x00E16C68, &OutputCoords[1], sizeof(OutputCoords[1]), 0);
+		WriteProcessMemory(pHandle, (void*)0x00E16C6C, &OutputCoords[2], sizeof(OutputCoords[2]), 0);
 
 		break;
 	}

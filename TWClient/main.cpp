@@ -7,9 +7,6 @@ DWORD pid;
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
-
-
-
 Client* myClient;
 
 #define DEFAULT_PORT 21370
@@ -36,7 +33,6 @@ void SecureUsername()
 
 int main(int argc, char **argv)
 {
-	/*
 	HWND hWnd = FindWindowA(0, ("Island"));
 
 
@@ -56,7 +52,6 @@ int main(int argc, char **argv)
 		getchar();
 		return 1;
 	}
-	*/
 	myClient = new Client(argc, argv, DEFAULT_PORT);
 
 	if (!myClient->Connect())
@@ -71,7 +66,7 @@ int main(int argc, char **argv)
 	float posXts, posYts, posZts;
 	while (true)
 	{
-		/*
+
 		ReadProcessMemory(pHandle, (void*)0x00E16974, &posXts, sizeof(posXts), 0);
 		ReadProcessMemory(pHandle, (void*)0x00E16978, &posYts, sizeof(posYts), 0);
 		ReadProcessMemory(pHandle, (void*)0x00E1697C, &posZts, sizeof(posZts), 0);
@@ -79,8 +74,7 @@ int main(int argc, char **argv)
 		std::string posYtsRQ = std::to_string(posYts);
 		std::string posZtsRQ = std::to_string(posZts);
 		std::string position = posXtsRQ + " " + posYtsRQ + " " + posZtsRQ;
-		*/
-		!myClient->SendString("xD");
+		!myClient->SendString(position);
 		Sleep(1000/MP_TICKRATE);
 	}
 	system("pause");
