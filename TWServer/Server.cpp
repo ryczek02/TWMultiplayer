@@ -1,6 +1,7 @@
 #include "Server.h"
 
-#define SERVER_IP "127.0.0.1"
+#define SERVER_IP "26.195.23.18"
+#define MP_TICKRATE 128
 
 Server::Server(int PORT)
 {
@@ -339,6 +340,7 @@ void Server::ClientHandler(int index)
 			break;
 		if (!serverPtr->ProcessPacket(index, packetType))
 			break;
+		//Sleep(1000 / MP_TICKRATE);
 	}
 
 	std::cout << "[UTRACONO POLACZENIE Z ID = " << index << "]" << std::endl;

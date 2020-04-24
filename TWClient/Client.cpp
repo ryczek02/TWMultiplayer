@@ -8,7 +8,7 @@
 #include <cassert>
 #include <sstream>
 
-#define SERVER_IP "127.0.0.1"
+#define SERVER_IP "26.195.23.18"
 
 DWORD pida;
 HWND hWnd;
@@ -76,7 +76,7 @@ bool Client::Connect()
 	return connected;
 }
 
-float OutputCoords[3];
+float OutputCoords[4];
 
 
 bool Client::ProcessPacket(PACKET packetType)
@@ -96,15 +96,14 @@ bool Client::ProcessPacket(PACKET packetType)
 			std::istream_iterator <float>(),
 			OutputCoords
 		);
-
+		//debug
 		std::cout << OutputCoords[0] << std::endl;
-		std::cout << OutputCoords[1] << std::endl;
-		std::cout << OutputCoords[2] << std::endl;
+		std::cout << OutputCoords[1];
+		std::cout << OutputCoords[2];
 
 		WriteProcessMemory(pHandle, (void*)0x00E16C64, &OutputCoords[0], sizeof(OutputCoords[0]), 0);
 		WriteProcessMemory(pHandle, (void*)0x00E16C68, &OutputCoords[1], sizeof(OutputCoords[1]), 0);
 		WriteProcessMemory(pHandle, (void*)0x00E16C6C, &OutputCoords[2], sizeof(OutputCoords[2]), 0);
-
 		break;
 	}
 
