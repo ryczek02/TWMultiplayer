@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\lukas\Desktop\TWMP\ChatClient-master\WinsockClient\WinsockClient\main.cpp(83,3): warning C4552: „!”: Wynik wyrażenia nie jest używany
+C:\Users\lukas\Desktop\TWMP\ChatClient-master\WinsockClient\WinsockClient\main.cpp(71,24): warning C4101: "posZts": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\lukas\Desktop\TWMP\ChatClient-master\WinsockClient\WinsockClient\main.cpp(71,16): warning C4101: "posYts": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\lukas\Desktop\TWMP\ChatClient-master\WinsockClient\WinsockClient\main.cpp(71,8): warning C4101: "posXts": lokalna zmienna, do której nie istnieje odwołanie
+  TWClient.vcxproj -> C:\Users\lukas\Desktop\TWMP\TWMultiplayer\TWMultiplayer\Debug\TWClient.exe
