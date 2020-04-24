@@ -138,11 +138,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\ChatClient-master\WinsockServer\WinsockServer\Server.h" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\ChatClient-master\WinsockServer\WinsockServer\main.cpp" />
-    <ClCompile Include="..\..\..\ChatClient-master\WinsockServer\WinsockServer\Server.cpp" />
+    <ClInclude Include="Server.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
