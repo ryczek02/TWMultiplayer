@@ -36,25 +36,6 @@ Gracze powinni odkryć co najmniej dwie postacie (np. wybrana + słoń), na ten 
 
 ## Kompilacja
 
-W pliku klienta, main.cpp ustawiamy PORT oraz TICKRATE wychodzący.
-
-```c++
-#define DEFAULT_PORT 21370
-#define MP_TICKRATE 128
-```
-W pliku serwera, Server.cpp ustawiamy IP oraz TICKRATE.
-
-```c++
-#define SERVER_IP "127.0.0.1"
-#define MP_TICKRATE 128
-```
-W pliku serwera, main.cpp ustawiamy port oraz wielkość bufora.
-
-```c++
-#define DEFAULT_BUFLEN 512
-#define DEFAULT_PORT 21370
-```
-
 Projekt obecnie nie wymaga dodatkowych bibliotek, wystarczą domyślne biblioteki kompilatora C++ dla Windowsa.
 
 ## Schemat działania 
