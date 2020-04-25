@@ -2,6 +2,7 @@
 #include "PACKETENUM.h"
 #include <Windows.h>
 #include <math.h>
+#include <sstream>
 #include <string.h>
 DWORD pid;
 #pragma comment (lib, "Ws2_32.lib")
@@ -64,20 +65,22 @@ int main(int argc, char **argv)
 	SecureUsername();
 	myClient->StartSubRoutine();
 
-
-	float posXts, posYts, posZts, rotZ;
+	float posXts, posYts, posZts;
 	while (true)
 	{
 		ReadProcessMemory(pHandle, (void*)0x00E16974, &posXts, sizeof(posXts), 0);
 		ReadProcessMemory(pHandle, (void*)0x00E16978, &posYts, sizeof(posYts), 0);
 		ReadProcessMemory(pHandle, (void*)0x00E1697C, &posZts, sizeof(posZts), 0);
-		ReadProcessMemory(pHandle, (void*)0x00E16998, &rotZ, 32, 0);
+
 
 		std::string posXtsRQ = std::to_string(posXts);
 		std::string posYtsRQ = std::to_string(posYts);
 		std::string posZtsRQ = std::to_string(posZts);
+
+
 		std::string data = posXtsRQ + " " + posYtsRQ + " " + posZtsRQ;
-		myClient->SendString(data);
+
+		//myClient->SendString(data);
 		Sleep(1000/MP_TICKRATE);
 	}
 	system("pause");

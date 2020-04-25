@@ -8,8 +8,6 @@
 #include <cassert>
 #include <sstream>
 
-#define SERVER_IP "26.195.23.18"
-
 DWORD pida;
 HWND hWnd;
 HANDLE pHandle;
@@ -20,6 +18,8 @@ Client::Client(int argc, char **argv, int PORT)
 	hWnd = FindWindowA(0, ("Island"));
 	GetWindowThreadProcessId(hWnd, &pida);
 	pHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pida);
+
+
 
 	iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
 	if (iResult != 0) {
@@ -32,7 +32,12 @@ Client::Client(int argc, char **argv, int PORT)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_TCP;
 
-	iResult = getaddrinfo(SERVER_IP, std::to_string(PORT).c_str(), &hints, &result);
+	std::string ipAdr;
+	std::cout << "Podaj adres IP: ";
+	std::cin >> ipAdr;
+
+
+	iResult = getaddrinfo(ipAdr.c_str(), std::to_string(PORT).c_str(), &hints, &result);
 	if (iResult != 0) {
 		printf("[BLAD POBIERANIA ADRESU IP]: %d\n", iResult);
 		WSACleanup();
@@ -76,7 +81,7 @@ bool Client::Connect()
 	return connected;
 }
 
-float OutputCoords[4];
+float OutputCoords[3];
 
 
 bool Client::ProcessPacket(PACKET packetType)
@@ -97,9 +102,7 @@ bool Client::ProcessPacket(PACKET packetType)
 			OutputCoords
 		);
 		//debug
-		std::cout << OutputCoords[0] << std::endl;
-		std::cout << OutputCoords[1];
-		std::cout << OutputCoords[2];
+		std::cout << OutputCoords[0] << "/" << OutputCoords[1] << "/" << OutputCoords[2] << std::endl;
 
 		WriteProcessMemory(pHandle, (void*)0x00E16C64, &OutputCoords[0], sizeof(OutputCoords[0]), 0);
 		WriteProcessMemory(pHandle, (void*)0x00E16C68, &OutputCoords[1], sizeof(OutputCoords[1]), 0);

@@ -1,6 +1,4 @@
 #include "Server.h"
-
-#define SERVER_IP "26.195.23.18"
 #define MP_TICKRATE 128
 
 Server::Server(int PORT)
@@ -18,7 +16,9 @@ Server::Server(int PORT)
 		printf("Blad utworzenia WSAStartup: %d\n", iResult);
 		exit(0);
 	}
-
+	std::string ipAdr;
+	std::cout << "Podaj adres IP: ";
+	std::cin >> ipAdr;
 	ZeroMemory(&hints, sizeof(hints));
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
@@ -26,21 +26,20 @@ Server::Server(int PORT)
 	hints.ai_flags = AI_PASSIVE;
 
 	// Resolve the server address and port
-	iResult = getaddrinfo(SERVER_IP, std::to_string(PORT).c_str(), &hints, &result);
+	iResult = getaddrinfo(ipAdr.c_str(), std::to_string(PORT).c_str(), &hints, &result);
 	if (iResult != 0)
 	{
 		printf("Pobieranie adresu: %d\n", iResult);
 		WSACleanup();
 		exit(0);
 	}
-
-	printf("[POBRANO ZADANY ADRES: %s]\n", SERVER_IP);
+	printf("[POBRANO ZADANY ADRES: %s]\n", ipAdr);
 
 	// Create a SOCKET for connecting to server
 	ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
 	if (ListenSocket == INVALID_SOCKET)
 	{
-		printf("Blad socketu: %ld\n", WSAGetLastError());
+		printf("[BLAD SOCKETU]: %ld\n", WSAGetLastError());
 		freeaddrinfo(result);
 		WSACleanup();
 		exit(0);
@@ -50,7 +49,7 @@ Server::Server(int PORT)
 	iResult = bind(ListenSocket, result->ai_addr, (int)result->ai_addrlen);
 	if (iResult == SOCKET_ERROR)
 	{
-		std::cout << "Blad bindowania: " << WSAGetLastError() << std::endl;
+		std::cout << "[BLAD BINDOWANIA]: " << WSAGetLastError() << std::endl;
 		freeaddrinfo(result);
 		closesocket(ListenSocket);
 		WSACleanup();
@@ -70,7 +69,7 @@ Server::Server(int PORT)
 		WSACleanup();
 		exit(0);
 	}
-	printf("[SERWER NASLUCHUJE NA IP: %s:%i]\n", SERVER_IP, PORT);
+	printf("[SERWER NASLUCHUJE NA IP: %s:%i]\n", ipAdr, PORT);
 	serverPtr = this;
 }
 
