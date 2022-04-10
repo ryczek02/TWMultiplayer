@@ -15,6 +15,8 @@ Opcjonalnie można pobrać skompilowany plik z zakładki Releases.
 
 Gracze powinni odkryć co najmniej dwie postacie (np. wybrana + słoń), na ten czas nie ma identyfikacji postaci. Serwer jest niezależny od gry, pierwsza osoba może wybrać swoją postać i uruchomić TWMPClient.exe. Drugi klient musi się przełączyć na słonia i również może otworzyć klienta. Powinna nastąpić próba łączenia.
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/uGmYcvLLuEo/0.jpg)](https://www.youtube.com/watch?v=uGmYcvLLuEo)
+
 ## TODO
 
 - [ ] Dane pozycji gracza
